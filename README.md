@@ -1,2 +1,2 @@
 # PyExifTool
-Una herramienta forense la cual aun está en desarrollo, se especializa en la detección de cambios en los archivos y otros usos forenses.
+A forensic tool which is still in development, specializes in file change detection and other forensic uses.
