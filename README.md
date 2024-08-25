@@ -1,9 +1,8 @@
-# PyExifTool
 
 A forensic tool which is still in development, specializes in file change detection and other forensic uses.
 
 
-#### **Usage**:
+### **Usage**:
 ```
 python3 PyExifTool.py:
 
@@ -18,6 +17,15 @@ nº = 1, Prints any possible editions in a image
 nº = 2, Creates a .html map in which saves the geo-locations of the images 
 
 nº = 3, Do both things 
+```
+
+### **Libraries imports**:
+You will need:
+```
+	1-Folium: pip install folium
+	2-Datetime:pip install DateTime
+	3-OS
+	4-SYS
 ```
 
 #### **Be careful with:**
