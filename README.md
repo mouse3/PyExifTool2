@@ -32,4 +32,4 @@ You will need:
 You shouldn't modify the .zip file because that's the module functions and its hard to repair it if you broke the file or modify it. So, you just need to modify and make changes in the .py file. The code is completely commented in Spanish but i will solve that as soon as possible
 
 #### ***Help from the community:***
-By the way, this repository is open to implement functions in the code (Like a new function or something like that).
+By the way, this repository is open to implement functions in the code (Like a new function or something like that) by a "Pull Request"
