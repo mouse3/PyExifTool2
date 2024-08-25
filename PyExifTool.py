@@ -5,11 +5,11 @@ from datetime import datetime
 from sys import argv
 
 menu = """
--h                                                      Muestra este bloque de texto
---ext-changed                                           Verifica si la extension de un archivo en el directorio ha cambiado
---analyze-image [nº] [nombre del mapa a guardar.html]   si nº = 1, Arroja posibles ediciones en la imagen. No hace falta poner el nombre del mapa
-                                                        si nº = 2, Crea un .html con una ruta en cuanto los metadatos GPS de la imagen
-                                                        si nº = 3, Hace ambas cosas
+-h                                                      Shows this text block
+--ext-changed                                           Verifies if the extension of a file in a directory was changed
+--analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
+                                                        nº = 2, Creates a .html map in which saves the geo-locations of the images
+                                                        si nº = 3, Do both things
 """
 
 def verificar_extension_cambiada(ruta_directorio):
