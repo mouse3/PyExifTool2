@@ -19,6 +19,8 @@ You will need:
 	2-Datetime:pip install DateTime
 	3-OS
 	4-SYS
+	5-math.log2
+	6-collections.Counter()
 ```
 
 #### **Be careful with:**
