@@ -3,10 +3,12 @@ import exiftool
 import folium
 from datetime import datetime
 from sys import argv
-
+from math import log2
+from collections import Counter
 menu = """
 -h                                                      Shows this text block
---ext-changed                                           Verifies if the extension of a file in a directory was changed
+--ext-changed [directory]                               Verifies if the extension of a file in a directory was changed
+--entropy [directory]                                   Analises the entropy of a file, This may detect some anti-forensic measure
 --analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
                                                         nº = 2, Creates a .html map in which saves the geo-locations of the images
                                                         si nº = 3, Do both things
@@ -92,6 +94,22 @@ def extraer_informacion_imagen(ruta_imagen, mode, nombre_mapa_guardar=None):
     else:
         print("Error: Modo no válido. Consulte -h para la lista de comandos.")
 
+def entropy(file_path):
+    # Leer el archivo en modo binario
+    with open(file_path, 'rb') as file:
+        data = file.read()
+    #Full mathematics here
+    # Calculates the frecuency of each byte of the data 
+    frecuency = Counter(data)
+    
+    # Calculates the probability of each byte 
+    length = len(data)
+    probabilities = [frec / length for frec in frecuency.values()]
+    
+    # Calculates the entropy using the Shannons' formula 
+    entropie = -sum(p * log2(p) for p in probabilities)
+
+    return entropie
 if __name__ == '__main__':
     if len(argv) > 1:
         if argv[1] == '-h':
@@ -100,6 +118,24 @@ if __name__ == '__main__':
             ruta_directorio = argv[2] if len(argv) >= 3 else os.getcwd()
             cant_archivos_modif = verificar_extension_cambiada(ruta_directorio)
             print("Cantidad de archivos modificados: ", cant_archivos_modif)
+        elif argv[1] == '--entropy':
+            file_path = argv[2]
+            bit_by_byte = entropy(file_path)
+            print(f'The entropy of the file is {bit_by_byte:.6f} bit by byte')
+            if bit_by_byte == 0:
+                print("The entropy level is so low")
+            elif 0 < bit_by_byte <= 2:
+                print("The entropy level is Low")
+            elif 2 < bit_by_byte <= 4:
+                print("The entropy level is Low-medium")
+            elif 4 < bit_by_byte <= 6:
+                print("The entropy level is Medium")
+            elif 6 < bit_by_byte <= 7.5:
+                print("The entropy level is Medium-high")
+            elif 7.5 < bit_by_byte < 8:
+                print("The entropy level is high, Is so possible that there was applied a forensic evasion technique.")
+            elif bit_by_byte >= 8:
+                print("The entropy level is high af. This is imposible")
         elif argv[1] == '--analyze-image':
             if len(argv) >= 4:
                 ruta_imagen = argv[2]
