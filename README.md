@@ -4,19 +4,12 @@ A forensic tool which is still in development, specializes in file change detect
 
 ### **Usage**:
 ```
-python3 PyExifTool.py:
-
--h Shows this text block
-
---ext-changed Verifies if the extension of a file in a directory was changed
-
---analyze-image [nº] [name of the map to save.html] 
-
-nº = 1, Prints any possible editions in a image
-
-nº = 2, Creates a .html map in which saves the geo-locations of the images 
-
-nº = 3, Do both things 
+-h                                                      Shows this text block
+--ext-changed [directory]                               Verifies if the extension of a file in a directory was changed
+--entropy [directory]                                   Analises the entropy of a file, This may detect some anti-forensic measure
+--analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
+                                                        nº = 2, Creates a .html map in which saves the geo-locations of the images
+                                                        si nº = 3, Do both things
 ```
 
 ### **Libraries imports**:
