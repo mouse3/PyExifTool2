@@ -49,8 +49,8 @@ def procesar_logs(archivo):
 
     for sublista in eventos:
         x_data.append(float(sublista[0]))  # Tiempo UNIX en ms
-        y_data.append(float(sublista[1]))  # PID en el eje Z
-        hover_texts.append(f"{sublista[4]}: {sublista[5]}")  # Información para el hover
+        y_data.append(float(sublista[1]))  # PID en el eje Y
+        hover_texts.append(f"UNIX: {sublista[0]}<br>PID: {sublista[1]}<br>{sublista[4]}<br>{sublista[5]}")  # Información para el hover
         if sublista[3] in log_level_mapping:
             z_data.append(log_level_mapping[sublista[3]][0])  # Nivel de log en el eje Y
             colors.append(log_level_mapping[sublista[3]][1])  # Colores según nivel de log
@@ -66,7 +66,7 @@ def procesar_logs(archivo):
             color=colors,  # Color según nivel de log
             opacity=0.8
         ),
-        text=hover_texts,  # Texto de hover
+        text= hover_texts,  # Texto de hover
         hoverinfo='text'
     )])
 

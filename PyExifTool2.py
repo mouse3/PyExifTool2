@@ -10,7 +10,7 @@ from json import loads
 from PIL import Image
 from re import findall
 import pytsk3
-from log_viewer import log_viewer
+from log_viewer import procesar_logs
 
 menu = """
 -h                                                      Shows this text block
@@ -295,7 +295,7 @@ if __name__ == '__main__':
         elif argv[1] == '--analyze-log':
             if len(argv) == 3:
                 directory = argv[2] if len(argv) >= 3 else getcwd()
-                log_viewer(directory)
+                procesar_logs(directory)
         elif argv[1] == '--analyze-image':
             if len(argv) >= 4:
                 ruta_imagen = argv[3]
