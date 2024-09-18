@@ -4,28 +4,46 @@ A forensic tool which is still in development, specializes in file change detect
 
 ### **Usage**:
 ```
-python3 PyExifTool.py:
+-h                                                      Shows this text messagge
 
--h Shows this text block
+--ext-changed [directory]                               Verifies if the extension of a file in a directory was changed
 
---ext-changed Verifies if the extension of a file in a directory was changed
+--entropy [directory]                                   Analises the entropy and the redundancy of a file, This may detect some anti-forensic measure
 
---analyze-image [nº] [name of the map to save.html] 
+--lsb [directory]                                       Decode a ocult message of a image
 
-nº = 1, Prints any possible editions in a image
+--hash [directory] [hash type]                          Calculates the hash of a specified file, default: MD5
 
-nº = 2, Creates a .html map in which saves the geo-locations of the images 
+--strings [directory] [min_length]                      Prints the strings on a file only if the strings are larger than the min_lenght
 
-nº = 3, Do both things 
+--recover-deleted [image]                               This function tries to recover deleted files from a image
+
+--analyze-log [directory]                               It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis. 
+                                                            X-axis: Unix time(ms)
+                                                            Y-axis: PID
+                                                            Z-axis: Importance (Info, warning, error and fatal)
+                                                        Export the data using: adb logcat *:VIWEF > file.txt
+
+--analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
+                                                        nº = 2, Creates a .html map in which saves the geo-locations of the images
+                                                        si nº = 3, Do both things
 ```
-
 ### **Libraries imports**:
 You will need:
 ```
-	1-Folium: pip install folium
-	2-Datetime:pip install DateTime
-	3-OS
-	4-SYS
+	1-  Folium: pip install folium
+	2-  Datetime:pip install DateTime
+	3-  OS
+	4-  SYS
+	5-  pytsk
+	6-  re
+	7-  json
+	8-  hashlib
+	9-  collections
+	10- math
+	
+
+	
 ```
 
 #### **Be careful with:**

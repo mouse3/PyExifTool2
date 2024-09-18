@@ -1,4 +1,4 @@
-from os import path, getcwd, walk
+from os import path, walk, getcwd
 import exiftool
 import folium
 from datetime import datetime
@@ -13,7 +13,7 @@ import pytsk3
 from log_viewer import procesar_logs
 
 menu = """
--h                                                      Shows this text block
+-h                                                      Shows this text messagge
 
 --ext-changed [directory]                               Verifies if the extension of a file in a directory was changed
 
@@ -31,7 +31,7 @@ menu = """
                                                             X-axis: Unix time(ms)
                                                             Y-axis: PID
                                                             Z-axis: Importance (Info, warning, error and fatal)
-                                                        Export the data using: .\adb logcat *:V *:I *:W *:E *:F > file.txt
+                                                        Export the data using: adb logcat *:VIWEF > file.txt
 
 --analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
                                                         nº = 2, Creates a .html map in which saves the geo-locations of the images
@@ -95,15 +95,24 @@ def verificar_extension_cambiada(ruta_directorio):
         for carpeta_raiz, subcarpetas, archivos in walk(ruta_directorio):
             for archivo in archivos:
                 ruta_completa = path.join(carpeta_raiz, archivo)
+                
+                # Ignorar ciertos archivos como los de 'exiftool_files'
                 if 'exiftool_files' in ruta_completa:
-                    continue  # Saltar este archivo
+                    continue  
+                
+                # Obtener la extensión del archivo actual
                 extension_actual = path.splitext(archivo)[-1].lower().replace('.', '')
+                
                 try:
+                    # Usar get_metadata en lugar de get_metadata_batch
                     metadata = et.get_metadata(ruta_completa)
-                    tipo_archivo = metadata.get('File:FileTypeExtension', '').lower()
-                    if extension_actual != tipo_archivo:
-                        cant_archivos_modif += 1
-                        print(f"El archivo '{ruta_completa}' tiene la extensión '.{extension_actual}' pero en los metadatos aparece como '.{tipo_archivo}'")
+                    
+                    # Verificar si los metadatos contienen el tipo de archivo
+                    if metadata:
+                        tipo_archivo = metadata.get('File:FileTypeExtension', '').lower()
+                        if extension_actual != tipo_archivo:
+                            cant_archivos_modif += 1
+                            print(f"El archivo '{ruta_completa}' tiene la extensión '.{extension_actual}' pero en los metadatos aparece como '.{tipo_archivo}'")
                 except Exception as e:
                     print(f"No se pudieron obtener metadatos para '{ruta_completa}': {e}")
                     continue
