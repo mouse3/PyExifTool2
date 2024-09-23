@@ -41,10 +41,12 @@ def procesar_logs(archivo):
     colors = []
     hover_texts = []
     log_level_mapping = {
-        'I': (1, 'blue'),   # Información
-        'W': (2, 'yellow'), # Advertencia
-        'E': (3, 'red'),    # Error
-        'F': (4, 'black')   # Crítico
+        'V': (1, 'cyan'),   # Información mas especifica
+        'D': (2, 'green'),  # Debug
+        'I': (3, 'blue'),   # Información
+        'W': (4, 'yellow'), # Advertencia
+        'E': (5, 'red'),    # Error
+        'F': (6, 'black')   # Crítico
     }
 
     for sublista in eventos:
@@ -82,5 +84,4 @@ def procesar_logs(archivo):
 
     # Mostrar el gráfico
     fig.show()
-
 
