@@ -24,7 +24,7 @@ A forensic tool which is still in development, specializes in file change detect
                                                             X-axis: Unix time(ms)
                                                             Y-axis: PID
                                                             Z-axis: Importance (Info, warning, error and fatal)
-                                                        Export the data using: adb logcat *:VIWEF > file.txt
+                                                        Export the data using: adb logcat > file.txt
 
 --analyze-image [nº] [nombre del mapa a guardar.html]   nº = 1, Prints any possible editions in a image
                                                         nº = 2, Creates a .html map in which saves the geo-locations of the images
