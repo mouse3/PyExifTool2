@@ -3,6 +3,7 @@ A Open-Source & Non-professional(not that much) forensic Tool which specializes 
 
 
 ### **Usage**:
+All the functions that are implemented, more coming soon...
 ```
 -h                                                      Shows this text messagge
 
@@ -68,7 +69,7 @@ You will need:
 	14- scipy.io(wavfile)
 	15- scipy.fft(ftt)
 	16- scipy.signal(spectrogram)
-	17-Plotly.graph_objects(Figure, Surface)
+	17- Plotly.graph_objects(Figure, Surface)
 ```
 
 You can install all of this dependences using
@@ -77,8 +78,8 @@ pip install -r requirements.txt
 ```
 Btw, the estimated size of all the files is around 94.7 MB
 
-#### **Be careful with:**
+### **Be careful with:**
 You shouldn't modify the .zip file because that's the module functions and its hard to repair it. So, you just need to modify and make changes in the .py file. The code is completely commented in Spanish, but i'll fix it as soon as possible
 
-#### ***Help from the community:***
+### ***Help from the community:***
 By the way, this repository is open to implement functions in the code (Like a new function, optimization or something like that) by a **Pull Request**
