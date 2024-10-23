@@ -20,6 +20,12 @@ A forensic tool which is still in development, specializes in file change detect
 
 --hexdump [file path]                                   Prints the hexdump of a file (the hex information and translated to ASCII utf-8 )
 
+--analyze-sniffed [file path] [Image output]               Prints the connections that have been made based on sniffing a .pcap file and its variants, 
+                                                        and also prints the number of requests between one IP and another, smth like:
+                                                            192.168.0.1 <-> 192.168.0.4 85 requests
+                                                            192.168.0.2 <-> 192.168.0.5 66 requests
+                                                            192.168.0.3 <-> 192.168.0.6 2 requests
+
 --analyze-log [file path]                               It represents the ADB logcat logs of an Android device on a 3-dimensional coordinate axis. 
                                                             X-axis: Unix time(ms)
                                                             Y-axis: PID
