@@ -1,0 +1,9 @@
+pyexiftool
+folium
+DateTime
+pytsk3
+numpy
+matplotlib
+scipy
+plotly
+networkx
